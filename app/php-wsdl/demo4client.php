@@ -49,12 +49,45 @@ class SoapDemoSoapClient{
 			$name
 		));
 	}
+
+        public function getTypes() {
+		if(is_null(self::$_Server))
+			self::$_Server=new SoapClient(self::$_WsdlUri);
+		return self::$_Server->__getTypes();
+        }
+
+        public function getFunctions() {
+		if(is_null(self::$_Server))
+			self::$_Server=new SoapClient(self::$_WsdlUri);
+		return self::$_Server->__getFunctions();
+        }
 }
 
     $client = new SoapDemoSoapClient();
     print("<p>client gemaakt</p>\n");
+
     $antwoord = $client->SayHello('iedereen');
     print("<p>antwoord: $antwoord</p>\n");
+
+    $types = $client->getTypes();
+    $size = sizeof($types);
+    print("<p>sizeof types: $size</p>\n");
+
+    foreach($types as $type)
+    {
+       print("<p>type: $type</p>\n");
+    }
+
+    $functions = $client->getFunctions();
+    $sizefu = sizeof($functions);
+    print("<p>sizeof functions: $sizefu</p>\n");
+
+    foreach($functions as $function)
+    {
+       print("<p>function: $function</p>\n");
+    }
+
+    print("<p>einde</p>\n");
 ?>
 
   </body>
