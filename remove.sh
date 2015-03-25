@@ -1,0 +1,2 @@
+docker rm lampapptest1
+

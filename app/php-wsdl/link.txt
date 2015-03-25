@@ -1,0 +1,2 @@
+https://code.google.com/p/php-wsdl-creator/issues/detail?id=20
+
