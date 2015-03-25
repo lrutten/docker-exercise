@@ -47,7 +47,7 @@ select * from steden;
 ~~~~
 
 
-Instead of typing all these commands the fiollowing script will do
+Instead of typing all these commands the following script will do
 the work.
 
 ~~~~
