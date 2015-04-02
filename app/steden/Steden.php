@@ -63,6 +63,30 @@ class Steden
         return $aantal;
     }
 
+    /**
+     * Maak een nieuwe stad.
+     *
+     * @param string $naam
+     * @param string $postnummer
+     * @return int
+     */
+    public function nieuweStad($naam, $postnummer) 
+    {
+        $pdo = new PDO("mysql:host=127.0.0.1;dbname=test", "admin", "paswoord");
+        $stmt = $pdo->prepare("insert into steden(naam, postnummer) values(:naam, :postnummer)");
+        $stmt->bindValue(":naam", $naam);
+        $stmt->bindValue(":postnummer", $postnummer);
+        $succes = $stmt->execute();
+        if (!$success)
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     public function __destruct() 
     {
       /*

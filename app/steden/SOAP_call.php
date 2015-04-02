@@ -35,6 +35,16 @@
         print("<p>aantal: $aantal</p>");
 
 
+        $client->nieuweStad("Genk", "3600");
+
+
+        print("<h1>Aantal steden B</h1>\n");
+        $aantal = $client->getAantal();
+        print("<ul>");
+        print("<p>aantal: $aantal</p>");
+
+
+
         print("<h1>Steden</h1>\n");
         $steden = $client->getSteden();
         print("<ul>");
