@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Pagina in Responsive Design</title>
+	 <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript">
+       function toonAantal()
+       {
+          alert("klik aantal");
+          $.ajax("rest-steden.php?actie=aantal",
+          {
+     			success: function(data)
+     			{
+     				alert("succes " + data.aantal);
+     				$("#aantal").html("Het aantal is " + data.aantal);
+     			},
+     			dataType: 'JSON'          
+          });
+       }
+
+       function nieuweStad(nm, pc)
+       {
+          alert("nieuwe stad " + nm + " " + pc);
+          $.ajax("rest-steden.php",
+          {
+            data:
+            {
+               actie: "nieuw",
+               naam: nm,
+               postcode: pc
+            },
+            type: 'post',
+     			success: function(data)
+     			{
+     				alert("nieuwe stad code " + data.code);
+     			},
+     			dataType: 'JSON'          
+          });
+       }
+    </script>
+  </head>
+  <body>
+
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Meerdere kolommen demo</h1>
+        <p>Resize this responsive page!</p>
+      </div>
+      <!-- Dit is een rij -->
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Het aantal steden</h2>
+ 
+          <div id="inhoud1">
+            <input type="button" value="aantal" onclick="toonAantal();"/>
+          </div>
+          
+          <div id="aantal">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h2>Een nieuwe stad maken</h2>
+          <div id="inhoud2">
+            <form>
+              <input type="text" id="naam" value=""/>
+              <input type="text" id="postcode" value=""/>
+              <input type="button" value="nieuw" onclick='nieuweStad($("#naam").val(),$("#postcode").val());'/>
+            </form>
+          </div>
+       </div>
+      </div>
+    </div>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

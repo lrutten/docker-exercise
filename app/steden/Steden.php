@@ -43,7 +43,8 @@ class Steden
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         while ($record = $stmt->fetch()) 
         {
-           array_push($namen, $record->naam);
+           //array_push($namen, $record->naam);
+           array_push($namen, $record);
         }
         $stmt = null;
         return $namen;
@@ -76,7 +77,7 @@ class Steden
         $stmt = $pdo->prepare("insert into steden(naam, postnummer) values(:naam, :postnummer)");
         $stmt->bindValue(":naam", $naam);
         $stmt->bindValue(":postnummer", $postnummer);
-        $succes = $stmt->execute();
+        $success = $stmt->execute();
         if (!$success)
         {
             return -1;
